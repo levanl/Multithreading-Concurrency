@@ -8,7 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     
     let centeredStackView: UIStackView = {
         let stackView = UIStackView()
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         setupUI()
     }
-
+    
     
     func setupUI() {
         view.addSubview(centeredStackView)
@@ -75,11 +75,11 @@ class ViewController: UIViewController {
         ])
         
         factorialButton.addTarget(self, action: #selector(factorialButtonClicked(_:)), for: .touchUpInside)
-
+        
     }
     
     @objc func factorialButtonClicked(_ sender: UIButton) {
-    
+        
         func factorial(of number: Int, completion: @escaping (Int) -> Void) {
             DispatchQueue.global().async {
                 var result = 1
@@ -93,17 +93,14 @@ class ViewController: UIViewController {
                 }
             }
         }
-
-
+        
         func generateRandomNumbers() -> Int {
             let fromNumber = 0
             let toNumber = 10
             let randomNum1 = Int(arc4random_uniform(UInt32(toNumber - fromNumber))) + fromNumber
             return randomNum1
         }
-
-
-
+        
         func findWinnerThread(completion: @escaping (String) -> Void) {
             let number1 = generateRandomNumbers()
             let number2 = generateRandomNumbers()
@@ -126,15 +123,14 @@ class ViewController: UIViewController {
                 }
             }
         }
-
-
+        
         findWinnerThread { result in
             DispatchQueue.main.async {
                 self.winningLabel.text = result
             }
         }
-
+        
     }
-
+    
 }
 
